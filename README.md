@@ -1,3 +1,72 @@
+# 🏏 IPL Data Analysis Project
+
+**Author:** Prashant Trivedi  
+**Role:** Data Engineer  
+**Technologies:** Apache Spark, Python, Amazon S3, Data Visualization  
+
+---
+
+## 🚀 Project Overview
+
+This project focuses on **analyzing IPL (Indian Premier League) data** to gain insights about teams, players, and match outcomes. The goal is to **extract meaningful patterns from raw match data** using **Big Data tools** and **Python visualizations**.  
+
+---
+
+## 🛠️ Tools & Technologies Used
+
+- **Apache Spark** ⚡ – For **big data processing and transformation**  
+- **Amazon S3** ☁️ – For **storing and retrieving IPL datasets**  
+- **Python** 🐍 – For **data analysis, scripting, and automation**  
+- **Matplotlib / Seaborn** 📊 – For **charts and visualizations**  
+- **Git & GitHub** 🐙 – Version control and project repository  
+
+---
+
+## 🔹 Key Features / Tasks
+
+1. **Data Collection & Storage**  
+   - IPL datasets stored in **Amazon S3 buckets** for scalable and secure storage.  
+   - CSV/JSON files organized for efficient access and processing.
+
+2. **Data Processing**  
+   - Used **Apache Spark** for **cleaning, transforming, and aggregating** large datasets.  
+   - Handled **player statistics, team performance metrics, and match details**.  
+
+3. **Data Analysis**  
+   - Calculated **top scorers, strike rates, and wicket takers**.  
+   - Analyzed **team performance trends over seasons**.  
+
+4. **Data Visualization**  
+   - Created **interactive charts and graphs** using Python libraries.  
+   - Examples:  
+     - 🥇 Top 5 run scorers per season  
+     - 🎯 Wicket distribution among bowlers  
+     - 📈 Team win/loss trends over seasons  
+
+---
+
+## 💻 Sample Python Code (Data Visualization)
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load data from S3
+df = pd.read_csv("s3://ipl-data-bucket/matches.csv")
+
+# Example: Top 5 scorers
+top_scorers = df.groupby('batsman')['runs'].sum().sort_values(ascending=False).head(5)
+
+# Plotting
+plt.figure(figsize=(10,6))
+sns.barplot(x=top_scorers.index, y=top_scorers.values, palette='viridis')
+plt.title("🏏 Top 5 Run Scorers in IPL", fontsize=16)
+plt.ylabel("Total Runs")
+plt.xlabel("Batsman")
+plt.show()
+
+
 IPL Data Engineering & Analytics using Apache Spark
 Project Overview
 
